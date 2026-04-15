@@ -1,20 +1,13 @@
 import { useState } from "react";
 import AuthModal from "./components/AuthModal";
+import Header from "./components/Header";
 
 function App() {
   const [isAuthOpen, setIsAuthOpen] = useState(false);
 
   return (
     <div>
-      <header
-        style={{
-          display: "flex",
-          justifyContent: "flex-end",
-          padding: "20px",
-        }}
-      >
-        <button onClick={() => setIsAuthOpen(true)}>Sign up</button>
-      </header>
+      <Header onAuthOpen={() => setIsAuthOpen(true)} />
 
       {isAuthOpen && <AuthModal onClose={() => setIsAuthOpen(false)} />}
     </div>
