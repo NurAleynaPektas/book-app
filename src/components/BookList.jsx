@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getTopBooks, getBooksByCategory } from "../services/api";
-
+import BookCard from "../components/BookCard";
 export default function BookList({ selectedCategory }) {
   const [booksData, setBooksData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -66,15 +66,7 @@ export default function BookList({ selectedCategory }) {
   return (
     <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
       {booksData.map((book) => (
-        <div key={book._id} style={{ width: "120px" }}>
-          <img
-            src={book.book_image}
-            alt={book.title}
-            style={{ width: "100%", borderRadius: "8px" }}
-          />
-          <p style={{ fontWeight: "700", fontSize: "12px" }}>{book.title}</p>
-          <p style={{ fontSize: "11px", color: "gray" }}>{book.author}</p>
-        </div>
+        <BookCard book={book} key={book._id} />
       ))}
     </div>
   );
