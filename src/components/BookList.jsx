@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { getTopBooks, getBooksByCategory } from "../services/api";
 import BookCard from "../components/BookCard";
+import BookModal from "../components/BookModal";
+
 export default function BookList({ selectedCategory }) {
   const [booksData, setBooksData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [selectedBook, setSelectedBook] = useState(null);
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -33,41 +36,40 @@ export default function BookList({ selectedCategory }) {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
-  if (selectedCategory === "all") {
-    return (
-      <div>
-        {booksData.map((category) => (
-          <div key={category.list_name} style={{ marginBottom: "32px" }}>
-            <h3>{category.list_name}</h3>
-
-            <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
-              {category.books.slice(0, 5).map((book) => (
-                <div key={book._id} style={{ width: "120px" }}>
-                  <img
-                    src={book.book_image}
-                    alt={book.title}
-                    style={{ width: "100%", borderRadius: "8px" }}
-                  />
-                  <p style={{ fontWeight: "700", fontSize: "12px" }}>
-                    {book.title}
-                  </p>
-                  <p style={{ fontSize: "11px", color: "gray" }}>
-                    {book.author}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-    );
-  }
-
   return (
-    <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
-      {booksData.map((book) => (
-        <BookCard book={book} key={book._id} />
-      ))}
-    </div>
+    <>
+      {selectedCategory === "all" ? (
+        <div>
+          {booksData.map((category) => (
+            <div key={category.list_name} style={{ marginBottom: "32px" }}>
+              <h3>{category.list_name}</h3>
+
+              <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+                {category.books.slice(0, 5).map((book) => (
+                  <BookCard
+                    key={book._id}
+                    book={book}
+                    onClick={setSelectedBook}
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+          {booksData.map((book) => (
+            <BookCard key={book._id} book={book} onClick={setSelectedBook} />
+          ))}
+        </div>
+      )}
+
+      {selectedBook && (
+        <BookModal
+          bookId={selectedBook}
+          onClose={() => setSelectedBook(null)}
+        />
+      )}
+    </>
   );
 }
