@@ -8,8 +8,27 @@
 }
 
 .logo {
+  text-decoration: none;
+  color: #111111;
   font-weight: 700;
   font-size: 18px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.link {
+  text-decoration: none;
+  color: #111111;
+  font-weight: 500;
+}
+
+.active {
+  color: #4f2ee8;
+  font-weight: 700;
 }
 
 .right {
@@ -42,10 +61,10 @@
   border-radius: 24px;
   border: none;
   background-color: #4f2ee8;
-  color: white;
+  color: #ffffff;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.2s;
+  transition: background-color 0.2s ease;
 }
 
 .authBtn:hover {

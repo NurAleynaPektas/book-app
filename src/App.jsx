@@ -1,9 +1,10 @@
 import { useState } from "react";
 import AuthModal from "./components/AuthModal";
 import Header from "./components/Header";
-import Layout from "./components/Layout";
-import Categories from "./components/Categories";
-import BookList from "./components/BookList";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import ShoppingList from "./pages/ShoppingList";
+
 function App() {
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -12,12 +13,19 @@ function App() {
     <div>
       <Header onAuthOpen={() => setIsAuthOpen(true)} />
 
-      <Layout sidebar={<Categories onSelect={setSelectedCategory} />}>
-        <h1>
-          {selectedCategory === "all" ? "Best Sellers Books" : selectedCategory}
-        </h1>
-        <BookList selectedCategory={selectedCategory} />
-      </Layout>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
+            />
+          }
+        />
+
+        <Route path="/shopping" element={<ShoppingList />} />
+      </Routes>
 
       {isAuthOpen && <AuthModal onClose={() => setIsAuthOpen(false)} />}
     </div>
