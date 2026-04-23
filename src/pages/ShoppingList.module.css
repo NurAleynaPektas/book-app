@@ -1,0 +1,63 @@
+.container {
+  padding: 24px;
+}
+
+.title {
+  margin-bottom: 24px;
+}
+
+.empty {
+  color: #666;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.card {
+  display: flex;
+  gap: 20px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 16px;
+  align-items: flex-start;
+}
+
+.image {
+  width: 100px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.info {
+  flex: 1;
+}
+
+.bookTitle {
+  margin: 0 0 8px;
+}
+
+.author {
+  margin: 0 0 8px;
+  color: #666;
+}
+
+.description {
+  margin: 0;
+}
+
+.removeBtn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 20px;
+  background-color: #4f2ee8;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.removeBtn:hover {
+  background-color: #3721b6;
+}
