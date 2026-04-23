@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getTopBooks, getBooksByCategory } from "../services/api";
 import BookCard from "../components/BookCard";
 import BookModal from "../components/BookModal";
+import css from "./BookList.module.css";
 
 export default function BookList({ selectedCategory }) {
   const [booksData, setBooksData] = useState([]);
@@ -33,18 +34,18 @@ export default function BookList({ selectedCategory }) {
     fetchBooks();
   }, [selectedCategory]);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
+  if (loading) return <p className={css.message}>Loading...</p>;
+  if (error) return <p className={css.message}>{error}</p>;
 
   return (
     <>
       {selectedCategory === "all" ? (
-        <div>
+        <div className={css.wrapper}>
           {booksData.map((category) => (
-            <div key={category.list_name} style={{ marginBottom: "32px" }}>
-              <h3>{category.list_name}</h3>
+            <div key={category.list_name} className={css.categorySection}>
+              <h3 className={css.categoryTitle}>{category.list_name}</h3>
 
-              <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+              <div className={css.booksGrid}>
                 {category.books.slice(0, 5).map((book) => (
                   <BookCard
                     key={book._id}
@@ -57,7 +58,7 @@ export default function BookList({ selectedCategory }) {
           ))}
         </div>
       ) : (
-        <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+        <div className={css.booksGrid}>
           {booksData.map((book) => (
             <BookCard key={book._id} book={book} onClick={setSelectedBook} />
           ))}

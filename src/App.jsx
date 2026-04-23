@@ -1,17 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AuthModal from "./components/AuthModal";
 import Header from "./components/Header";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import ShoppingList from "./pages/ShoppingList";
-
+import { getTheme, setTheme } from "./utils/theme";
 function App() {
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [theme, setThemeState] = useState(getTheme());
+
+  useEffect(() => {
+    document.body.setAttribute("data-theme", theme);
+    setTheme(theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setThemeState((prev) => (prev === "light" ? "dark" : "light"));
+  };
 
   return (
     <div>
-      <Header onAuthOpen={() => setIsAuthOpen(true)} />
+      <Header
+        onAuthOpen={() => setIsAuthOpen(true)}
+        onToggleTheme={toggleTheme}
+      />
 
       <Routes>
         <Route

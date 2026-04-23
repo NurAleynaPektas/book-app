@@ -2,6 +2,7 @@
   width: 150px;
   cursor: pointer;
   transition: 0.2s;
+  color: var(--text-color);
 }
 
 .card:hover {
@@ -21,5 +22,5 @@
 
 .author {
   font-size: 12px;
-  color: gray;
+  color: var(--secondary-text-color);
 }

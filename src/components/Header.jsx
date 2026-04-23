@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import css from "./Header.module.css";
 
-export default function Header({ onAuthOpen }) {
+export default function Header({ onAuthOpen, onToggleTheme }) {
   return (
     <header className={css.header}>
       <Link to="/" className={css.logo}>
@@ -29,7 +29,7 @@ export default function Header({ onAuthOpen }) {
       </nav>
 
       <div className={css.right}>
-        <div className={css.toggle}></div>
+        <div className={css.toggle} onClick={onToggleTheme}></div>
 
         <button className={css.authBtn} onClick={onAuthOpen}>
           Sign up →
