@@ -28,3 +28,9 @@ export const toggleShoppingList = (book) => {
     return true;
   }
 };
+export const removeFromShoppingList = (bookId) => {
+  const books = getShoppingList();
+  const updatedBooks = books.filter((book) => book._id !== bookId);
+  saveShoppingList(updatedBooks);
+  return updatedBooks;
+};
