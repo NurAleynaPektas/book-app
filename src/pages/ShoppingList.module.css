@@ -1,32 +1,43 @@
 .container {
-  padding: 24px;
+  padding: 16px;
 }
 
 .title {
   margin-bottom: 24px;
+
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-color);
 }
 
 .empty {
-  color: #666;
+  font-size: 15px;
+  color: var(--secondary-text-color);
 }
 
 .list {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 
 .card {
   display: flex;
-  gap: 20px;
-  border: 1px solid #ddd;
-  border-radius: 12px;
+  flex-direction: column;
+  gap: 16px;
+
   padding: 16px;
-  align-items: flex-start;
+
+  border: 1px solid #dddddd;
+  border-radius: 14px;
+
+  background-color: #ffffff;
 }
 
 .image {
-  width: 100px;
+  width: 100%;
+  max-width: 180px;
+
   border-radius: 8px;
   object-fit: cover;
 }
@@ -36,28 +47,87 @@
 }
 
 .bookTitle {
-  margin: 0 0 8px;
+  margin-bottom: 8px;
+
+  font-size: 18px;
+  color: var(--text-color);
 }
 
 .author {
-  margin: 0 0 8px;
-  color: #666;
+  margin-bottom: 8px;
+
+  font-size: 14px;
+  color: var(--secondary-text-color);
 }
 
 .description {
-  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+
+  color: var(--text-color);
 }
 
 .removeBtn {
+  width: 100%;
+  min-height: 44px;
+
   padding: 10px 16px;
+
   border: none;
-  border-radius: 20px;
+  border-radius: 999px;
+
   background-color: #4f2ee8;
-  color: #fff;
+  color: #ffffff;
+
+  font-weight: 600;
   cursor: pointer;
-  transition: 0.2s;
 }
 
-.removeBtn:hover {
-  background-color: #3721b6;
+/* TABLET */
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 24px 32px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .card {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .image {
+    width: 110px;
+    flex-shrink: 0;
+  }
+
+  .removeBtn {
+    width: auto;
+    align-self: flex-start;
+  }
+}
+
+/* DESKTOP */
+@media screen and (min-width: 1020px) {
+  .container {
+    padding: 32px 48px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .image {
+    width: 120px;
+  }
+
+  .removeBtn:hover {
+    background-color: #3721b6;
+  }
 }
