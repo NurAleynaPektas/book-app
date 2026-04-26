@@ -15,15 +15,12 @@ function App() {
     setTheme(theme);
   }, [theme]);
 
-  const toggleTheme = () => {
-    setThemeState((prev) => (prev === "light" ? "dark" : "light"));
-  };
+  
 
   return (
     <div>
       <Header
         onAuthOpen={() => setIsAuthOpen(true)}
-        onToggleTheme={toggleTheme}
       />
 
       <Routes>
