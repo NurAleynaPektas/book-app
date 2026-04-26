@@ -1,26 +1,67 @@
 .card {
-  width: 150px;
+  width: 100%;
   cursor: pointer;
-  transition: 0.2s;
+  transition: transform 0.2s ease;
+
+  display: flex;
+  flex-direction: column;
+
   color: var(--text-color);
 }
 
-.card:hover {
-  transform: scale(1.05);
+.card:active {
+  transform: scale(0.98);
 }
 
 .image {
   width: 100%;
+  height: auto;
+
   border-radius: 8px;
+  object-fit: cover;
 }
 
 .title {
   font-size: 13px;
   font-weight: 700;
-  margin-top: 6px;
+
+  margin-top: 8px;
+  line-height: 1.2;
 }
 
 .author {
   font-size: 12px;
+  margin-top: 4px;
+
   color: var(--secondary-text-color);
+}
+
+/* TABLET */
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: 14px;
+  }
+
+  .author {
+    font-size: 13px;
+  }
+
+  .card:hover {
+    transform: scale(1.04);
+  }
+}
+
+/* DESKTOP */
+@media screen and (min-width: 1020px) {
+  .title {
+    font-size: 15px;
+  }
+
+  .author {
+    font-size: 14px;
+  }
+
+  .card:hover {
+    transform: scale(1.06);
+  }
 }

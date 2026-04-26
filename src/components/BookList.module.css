@@ -5,20 +5,60 @@
 }
 
 .categorySection {
-  margin-bottom: 32px;
+  width: 100%;
 }
 
 .categoryTitle {
   margin-bottom: 16px;
+
+  font-size: 18px;
+  font-weight: 700;
+
   color: var(--text-color);
 }
 
 .booksGrid {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px 16px;
 }
 
 .message {
+  padding: 20px 0;
+
+  font-size: 16px;
   color: var(--text-color);
+}
+
+/* TABLET */
+@media screen and (min-width: 768px) {
+  .wrapper {
+    gap: 40px;
+  }
+
+  .categoryTitle {
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+
+  .booksGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px 20px;
+  }
+}
+
+/* DESKTOP */
+@media screen and (min-width: 1020px) {
+  .wrapper {
+    gap: 48px;
+  }
+
+  .categoryTitle {
+    font-size: 22px;
+  }
+
+  .booksGrid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 32px 24px;
+  }
 }
