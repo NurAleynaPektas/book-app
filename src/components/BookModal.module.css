@@ -17,27 +17,110 @@
 
 .close {
   position: absolute;
-  right: 10px;
-  top: 10px;
+  top: 12px;
+  right: 12px;
+
+  width: 32px;
+  height: 32px;
+
   border: none;
-  background: transparent;
-  font-size: 24px;
+  background-color: transparent;
+
+  font-size: 28px;
+  line-height: 1;
+  color: var(--text-color);
+
   cursor: pointer;
-}.image {
-  width: 100%;
-  max-width: 200px;
-  border-radius: 8px;
+}
+
+.image {
   display: block;
-  margin-bottom: 16px;
+
+  width: 100%;
+  max-width: 180px;
+
+  margin: 0 auto 18px;
+
+  border-radius: 8px;
+}
+
+.modal h2 {
+  margin-bottom: 8px;
+
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.modal p {
+  margin-bottom: 10px;
+
+  font-size: 14px;
+  line-height: 1.45;
+
+  color: var(--secondary-text-color);
 }
 
 .actionBtn {
+  width: 100%;
+  min-height: 48px;
+
   margin-top: 16px;
-  padding: 14px 20px;
+  padding: 12px 18px;
+
   border: none;
   border-radius: 999px;
+
   background-color: #4f2ee8;
-  color: #fff;
-  font-weight: 600;
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 700;
+
   cursor: pointer;
+}
+
+/* TABLET */
+@media screen and (min-width: 768px) {
+  .modal {
+    max-width: 520px;
+    padding: 48px 32px 28px;
+  }
+
+  .image {
+    max-width: 220px;
+    margin-bottom: 22px;
+  }
+
+  .modal h2 {
+    font-size: 24px;
+  }
+
+  .modal p {
+    font-size: 15px;
+  }
+
+  .actionBtn {
+    min-height: 52px;
+    font-size: 15px;
+  }
+}
+
+/* DESKTOP */
+@media screen and (min-width: 1020px) {
+  .modal {
+    max-width: 580px;
+    padding: 52px 40px 32px;
+  }
+
+  .image {
+    max-width: 240px;
+  }
+
+  .close:hover {
+    color: #4f2ee8;
+  }
+
+  .actionBtn:hover {
+    background-color: #3b22b8;
+  }
 }
